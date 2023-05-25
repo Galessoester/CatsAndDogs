@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{head-fragment :: head('Ester Galesso')}"></head>
+
+<body>
+
+	<nav th:replace="~{menu-fragment :: nav()}"></nav>
+
+	<div th:text="${mensagem}"></div>
+</body>
+</html>

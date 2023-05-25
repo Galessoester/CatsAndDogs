@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{head-fragment :: head('Profissionais cadastrados')}">
+<meta charset="UTF-8">
+</head>
+
+<body>
+	<nav th:replace="~{menu-fragment :: nav()}"></nav>
+	
+	<div class="container-fluid">
+		<h3 class="text-left fs-2 text-center">Profissionais</h3>
+		<hr>
+		<a type="button" class="btn btn-info mt-2" href="profissional/create"> Cadastrar novo profissional</a>
+		<hr>
+		<table class="table table-success table-bordered table-lg mt-4">
+			<thead>
+				<th>Id</th>
+				<th>Nome</th>
+				<th>CRV</th>
+				<th>Especialidade</th>
+				<th>Disponibilidade</th>
+				<th>Duração</th>
+				<th>Editar</th>
+				<th>Deletar</th>
+			</thead>
+			<tbody>
+				<tr th:each="profissional : ${profissionais}">
+					<td th:text="${profissional.getId()}"></td>
+					<td th:text="${profissional.getNome()}"></td>
+					<td th:text="${profissional.getCrv()}"></td>
+					<td th:text="${profissional.getEspecialidade()}"></td>
+					<td th:text="${profissional.getDisponibilidade()}"></td>
+					<td th:text="${profissional.getDuracao()}"></td>
+					<td><a th:href="@{/profissional/edit/{profissionalId} (profissionalId = ${profissional.id})}">Editar</a></td>
+					<td><a th:href="@{/profissional/delete/{profissionalId} (profissionalId = ${profissional.id})}">Deletar</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

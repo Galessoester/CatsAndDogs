@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{head-fragment :: head('Consultas agendadas')}">
+<meta charset="UTF-8">
+</head>
+
+<body>
+	<nav th:replace="~{menu-fragment :: nav()}"></nav>
+	
+	<div class="container-fluid">
+		<h3 class="text-left fs-2 text-center">Consultas agendadas</h3>
+		<hr>
+		<a type="button" class="btn btn-info mt-2" href="consulta/create"> Cadastrar nova consulta</a>
+		<hr>
+		<table class="table table-success table-bordered table-lg mt-4">
+			<thead>
+				<th>Id</th>
+				<th>Tutor</th>
+				<th>Pet</th>
+				<th>Profissional</th>
+				<th>Duração</th>
+				<th>Data</th>
+				<!-- <th>Editar</th> -->
+				<th>Deletar</th>
+			</thead>
+			<tbody>
+				<tr th:each="consulta : ${consultas}">
+					<td th:text="${consulta.getId()}"></td>
+					<td th:text="${consulta.getTutor().getNome()}"></td>
+					<td th:text="${consulta.getAnimal().getNome()}"></td>
+					<td th:text="${consulta.getProfissional().getNome()}"></td>
+					<td th:text="${consulta.getProfissional().getDuracao()}"></td>
+					<td th:text="${consulta.getData()}"></td>
+					<!--<td><a th:href="@{/consulta/edit/{consultaId} (consultaId = ${consulta.id})}">Editar</a></td>-->
+					<td><a th:href="@{/consulta/delete/{consultaId} (consultaId = ${consulta.id})}">Deletar</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
