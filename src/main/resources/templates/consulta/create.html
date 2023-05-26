@@ -21,7 +21,7 @@
 				<div class="col-md-6">
 					<div class="input-group mb-3 input-group-sm">
 						<label class="input-group-text" for="animal">Animal</label>
-					    <select class="form-control" name="animal" id="animal">					    	
+					    <select class="form-control" name="animal" id="animal">							    	
 					    </select>
 					</div>
 				</div>
@@ -53,26 +53,6 @@
 	
 </body>
 <script>
-
-	function buscarTutor() {
-		
-	}
-	
-	function criarListaTutor(){
-		
-	}
-
-	function buscarProfissional(profissional){
-		fetch("https://demo0582675.mockable.io/carros")
-        .then(response => response.json())
-        .then(data => criarListaCarro(data))
-        .catch(error => alert(error))
-	}
-	
-	function preencherProfissional(data){
-		document.getElementById("especialidade").value = data.especialidade;
-		document.getElementById("duracao").value = data.duracao;
-	}
 	
 	let responseEntity;
 	

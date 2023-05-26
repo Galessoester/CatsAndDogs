@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.fiap.CatsNDogs.model.Consulta;
+//import br.com.fiap.CatsNDogs.model.Tutor;
 import br.com.fiap.CatsNDogs.model.repository.ConsultaRepository;
+import br.com.fiap.CatsNDogs.model.repository.tutorRepository;
 import jakarta.validation.Valid;
 
 @Controller
@@ -23,6 +25,9 @@ public class ConsultaController {
 	@Autowired
 	private ConsultaRepository consultaRepository;
 	
+	@Autowired
+	private tutorRepository tutorRepository;
+	
 	@GetMapping("")
 	public ModelAndView get() {
 		ModelAndView model = new ModelAndView("consulta/index");
@@ -30,6 +35,14 @@ public class ConsultaController {
 		model.addObject("consultas", listaConsultas);
 		return model;
 	}
+	
+//	@GetMapping("/create")
+//	public ModelAndView get() {
+//		ModelAndView model = new ModelAndView("consulta/create");
+//		List<Tutor> listaTutores = tutorRepository.findAll();
+//		model.addObject("tutores", listaTutores);
+//		return model;
+//	}
 	
 	@GetMapping("/create")
 	public ModelAndView create() {
