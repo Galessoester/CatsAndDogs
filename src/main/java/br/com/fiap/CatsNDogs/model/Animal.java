@@ -14,16 +14,10 @@ public class Animal {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@NotBlank
-	@NotNull
 	private String nome;
 
-	@NotBlank
-	@NotNull
 	private String raca;
 	
-	@NotBlank
-	@NotNull
 	private String especie;
 	private String idade;
 

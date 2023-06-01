@@ -18,7 +18,7 @@ public class Profissional {
 	@NotNull
 	private String nome;
 
-	@Pattern(regexp = "\\d{4}/[A-Z]{2}", message = "CRV fora do padrão 0000/XX")
+	@Pattern(regexp = "\\d{4}/[A-Z]{2}", message = "CRV fora do padrão 9999/XX")
 	private String crv;
 	private String especialidade;
 	private String disponibilidade;

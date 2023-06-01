@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.fiap.CatsNDogs.model.Tutor;
-import br.com.fiap.CatsNDogs.model.repository.tutorRepository;
+import br.com.fiap.CatsNDogs.model.repository.TutorRepository;
 import jakarta.validation.Valid;
 
 @Controller
@@ -25,7 +25,7 @@ import jakarta.validation.Valid;
 public class TutorController {
 
 	@Autowired
-	private tutorRepository tutorRepository;
+	private TutorRepository tutorRepository;
 	
 	@GetMapping("")
 	public ModelAndView get() {

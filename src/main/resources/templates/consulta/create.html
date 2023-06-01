@@ -9,20 +9,25 @@
 	
 	<div class="container mt-5">
 		<h2 class="text-center">Agendar consulta</h2>
-		<form method="post" class="mt-12" th:object="${animal}" id='frmAnimal'
-			action="/animal/create">
+		<form method="post" class="mt-12" th:object="${consulta}" id='frmConsulta'
+			action="/consulta/create">
 			<div class="row">
 				<div class="col-md-6">
 					<div class="input-group mb-3 input-group-sm">													
 					    <label class="input-group-text" for="tutor">Tutor</label>
-					    <select class="form-control" name="tutor" id="tutor"></select>
+					    <select class="form-control" name="tutor" id="tutor">
+					    	<option>Selecione</option>
+					    	<option th:each="tutor : ${tutores}" th:value="${tutor.getId()}" th:text="${tutor.getNome()}"></option>
+					    </select>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="input-group mb-3 input-group-sm">
 						<label class="input-group-text" for="animal">Animal</label>
-					    <select class="form-control" name="animal" id="animal">							    	
-					    </select>
+					    <select class="form-control" name="animal" id="animal">	
+						    <option>Selecione</option>
+						   	<option th:each="animal : ${animais}" th:value="${animal.getId()}" th:text="${animal.getNome()}"></option>						    	
+						 </select>
 					</div>
 				</div>
 			</div>
@@ -30,7 +35,10 @@
 				<div class="col-md-6">
 					<div class="input-group mb-3 input-group-sm">
 						<label class="input-group-text" for="profissional">Profissional</label>
-					    <select class="form-control" name="profissional" id="profissional" onblur="buscarProfissional(this.value)"></select>
+					    <select class="form-control" name="profissional" id="profissional">
+					    	<option>Selecione</option>
+						   	<option th:each="profissional : ${profissionais}" th:value="${profissional.getId()}" th:text="${profissional.getNome()}"></option>
+					    </select>
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -38,15 +46,23 @@
 						<label class="input-group-text">Especialidade</label> <input type="text"
 							class="form-control" name="especialidade" id="especialidade"/>
 					</div>
-				</div>
+				</div>				
+			</div>
+			<div class="row">
 				<div class="col-md-6">
 					<div class="input-group mb-3 input-group-sm">
 						<label class="input-group-text">Duração</label> <input type="text"
 							class="form-control" name="duracao" id="duracao"/>
 					</div>
 				</div>
+				<div class="col-md-6">
+					<div class="input-group mb-3 input-group-sm">
+						<label class="input-group-text">Data</label> <input type="text"
+							class="form-control" name="data" id="data"/>
+					</div>
+				</div>
 			</div>
-			<input class="btn btn-success" type="button"
+			<input class="btn btn-primary" type="button"
 				value="Agendar consulta" onclick="salvar();" />
 		</form>
 	</div>
@@ -57,7 +73,7 @@
 	let responseEntity;
 	
 	function salvar() {
-		const form = document.getElementById('frmAnimal');
+		const form = document.getElementById('frmConsulta');
 		const formData = new FormData(form); // create FormData object
 		const jsonBody = JSON.stringify(Object.fromEntries(formData.entries()));
 		var myHeaders = new Headers();
@@ -70,7 +86,7 @@
 			redirect: 'follow'
 		};
 	
-		fetch("/animal/create", requestOptions)
+		fetch("/consulta/create", requestOptions)
 			.then(response => {
 				responseEntity = response
 				return response.json()
@@ -85,7 +101,7 @@
 			alert('Criado com sucesso')
 				
 			await new Promise(r => setTimeout(r, 2000));
-			window.location.href = "/animal";
+			window.location.href = "/consulta";
 			return;
 		}
 		let erros = document.getElementById('erros');

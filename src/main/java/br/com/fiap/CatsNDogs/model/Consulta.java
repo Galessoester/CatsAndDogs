@@ -4,8 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -15,20 +13,14 @@ public class Consulta {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@NotBlank
 	@NotNull
-	@ManyToOne
-	private Animal animal;
+	private Long animal;
 	
-	@NotBlank
 	@NotNull
-	@ManyToOne
-	private Tutor tutor;
+	private Long tutor;
 	
-	@NotBlank
 	@NotNull
-	@ManyToOne
-	private Profissional profissional;
+	private Long profissional;
 	
 	private String data;
 
@@ -48,27 +40,27 @@ public class Consulta {
 		this.data = data;
 	}
 
-	public Animal getAnimal() {
+	public Long getAnimal() {
 		return animal;
 	}
 
-	public void setAnimal(Animal animal) {
+	public void setAnimal(Long animal) {
 		this.animal = animal;
 	}
 
-	public Tutor getTutor() {
+	public Long getTutor() {
 		return tutor;
 	}
 
-	public void setTutor(Tutor tutor) {
+	public void setTutor(Long tutor) {
 		this.tutor = tutor;
 	}
 
-	public Profissional getProfissional() {
+	public Long getProfissional() {
 		return profissional;
 	}
 
-	public void setProfissional(Profissional profissional) {
+	public void setProfissional(Long profissional) {
 		this.profissional = profissional;
 	}
 

@@ -10,15 +10,14 @@
 	<div class="container-fluid">
 		<h3 class="text-left fs-2 text-center">Consultas agendadas</h3>
 		<hr>
-		<a type="button" class="btn btn-info mt-2" href="consulta/create"> Cadastrar nova consulta</a>
+		<a type="button" class="btn btn-primary mt-2" href="consulta/create"> Cadastrar nova consulta</a>
 		<hr>
-		<table class="table table-success table-bordered table-lg mt-4">
+		<table class="table table-primary table-bordered table-lg mt-4">
 			<thead>
 				<th>Id</th>
 				<th>Tutor</th>
-				<th>Pet</th>
+				<th>Animal</th>
 				<th>Profissional</th>
-				<th>Duração</th>
 				<th>Data</th>
 				<!-- <th>Editar</th> -->
 				<th>Deletar</th>
@@ -26,10 +25,9 @@
 			<tbody>
 				<tr th:each="consulta : ${consultas}">
 					<td th:text="${consulta.getId()}"></td>
-					<td th:text="${consulta.getTutor().getNome()}"></td>
-					<td th:text="${consulta.getAnimal().getNome()}"></td>
-					<td th:text="${consulta.getProfissional().getNome()}"></td>
-					<td th:text="${consulta.getProfissional().getDuracao()}"></td>
+					<td th:text="${consulta.getTutor()}"></td>
+					<td th:text="${consulta.getAnimal()}"></td>
+					<td th:text="${consulta.getProfissional()}"></td>
 					<td th:text="${consulta.getData()}"></td>
 					<!--<td><a th:href="@{/consulta/edit/{consultaId} (consultaId = ${consulta.id})}">Editar</a></td>-->
 					<td><a th:href="@{/consulta/delete/{consultaId} (consultaId = ${consulta.id})}">Deletar</a></td>

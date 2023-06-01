@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.com.fiap.CatsNDogs.model.Tutor;
 
 @Repository
-public interface tutorRepository extends JpaRepository<Tutor, Long> {
+public interface TutorRepository extends JpaRepository<Tutor, Long> {
 
 }

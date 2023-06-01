@@ -13,10 +13,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.fiap.CatsNDogs.model.Animal;
 import br.com.fiap.CatsNDogs.model.Consulta;
+import br.com.fiap.CatsNDogs.model.Profissional;
+import br.com.fiap.CatsNDogs.model.Tutor;
+import br.com.fiap.CatsNDogs.model.repository.AnimalRepository;
 //import br.com.fiap.CatsNDogs.model.Tutor;
 import br.com.fiap.CatsNDogs.model.repository.ConsultaRepository;
-import br.com.fiap.CatsNDogs.model.repository.tutorRepository;
+import br.com.fiap.CatsNDogs.model.repository.ProfissionalRepository;
+import br.com.fiap.CatsNDogs.model.repository.TutorRepository;
 import jakarta.validation.Valid;
 
 @Controller
@@ -26,27 +31,37 @@ public class ConsultaController {
 	private ConsultaRepository consultaRepository;
 	
 	@Autowired
-	private tutorRepository tutorRepository;
+	private TutorRepository tutorRepository;
+	
+	@Autowired
+	private AnimalRepository animalRepository;
+	
+	@Autowired
+	private ProfissionalRepository profissionalRepository;
 	
 	@GetMapping("")
 	public ModelAndView get() {
 		ModelAndView model = new ModelAndView("consulta/index");
 		List<Consulta> listaConsultas = consultaRepository.findAll();
+		//List<Consulta> listaConsultas = consultaRepository.findByIdConsultas();
 		model.addObject("consultas", listaConsultas);
 		return model;
 	}
 	
-//	@GetMapping("/create")
-//	public ModelAndView get() {
-//		ModelAndView model = new ModelAndView("consulta/create");
-//		List<Tutor> listaTutores = tutorRepository.findAll();
-//		model.addObject("tutores", listaTutores);
-//		return model;
-//	}
 	
 	@GetMapping("/create")
 	public ModelAndView create() {
-		return new ModelAndView("consulta/create");
+		ModelAndView model = new ModelAndView("consulta/create");
+		List<Tutor> listaTutor = tutorRepository.findAll();
+		model.addObject("tutores", listaTutor);
+		
+		List<Animal> listaAnimal = animalRepository.findAll();
+		model.addObject("animais", listaAnimal);
+		
+		List<Profissional> listaProfissional = profissionalRepository.findAll();
+		model.addObject("profissionais", listaProfissional);
+		
+		return model;
 	}
 	
 	@PostMapping("/create")
